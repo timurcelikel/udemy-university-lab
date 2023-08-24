@@ -39,7 +39,7 @@ public class StudentsService {
 	 */
 	public List<Student> getAllRegisteredStudents() {
 
-		return List.of();
+		return studentsRepository.findAll();
 	}
 
 	/**

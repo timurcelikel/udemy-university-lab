@@ -1,53 +1,67 @@
 package university.management.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
- * @author Michael Pogrebinsky - www.topdeveloperacademy.com
- * Persistence entity that represents a student, registered at the university
+ * @author Michael Pogrebinsky - www.topdeveloperacademy.com Persistence entity that represents a student, registered at the university
  */
+@Table(name = "Students")
+@Entity
 public class Student {
 
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String firstName;
+	@Column(length = 60, nullable = false)
+	private String firstName;
 
-    private String lastName;
+	@Column(length = 60, nullable = false)
+	private String lastName;
 
-    private String email;
+	@Column(length = 60, nullable = false, unique = true)
+	private String email;
 
-    private LocalDate dateOfBirth;
+	private LocalDate dateOfBirth;
 
-    public Student() {
-    }
+	public Student() {
 
-    public Student(String firstName,
-                   String lastName,
-                   String email,
-                   LocalDate dateOfBirth) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-    }
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Student(String firstName,
+			String lastName,
+			String email,
+			LocalDate dateOfBirth) {
 
-    public String getFirstName() {
-        return firstName;
-    }
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.dateOfBirth = dateOfBirth;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public Long getId() {
 
-    public String getEmail() {
-        return email;
-    }
+		return id;
+	}
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
+	public String getFirstName() {
+
+		return firstName;
+	}
+
+	public String getLastName() {
+
+		return lastName;
+	}
+
+	public String getEmail() {
+
+		return email;
+	}
+
+	public LocalDate getDateOfBirth() {
+
+		return dateOfBirth;
+	}
 }

@@ -22,6 +22,9 @@ public class LearnerProfile {
 
 	private short startYear;
 
+	@OneToOne(mappedBy = "learnerProfile")
+	private Student student;
+
 	public LearnerProfile() {
 
 	}
@@ -54,5 +57,10 @@ public class LearnerProfile {
 	public short getStartYear() {
 
 		return startYear;
+	}
+
+	public Student getStudent() {
+
+		return student;
 	}
 }

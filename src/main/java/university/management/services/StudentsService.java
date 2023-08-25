@@ -29,7 +29,7 @@ public class StudentsService {
 	 */
 	public Optional<Student> findStudentByEmail(String email) {
 
-		return Optional.empty();
+		return studentsRepository.findByEmail(email);
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class StudentsService {
 	 */
 	public Optional<Student> findStudentById(Long id) {
 
-		return Optional.empty();
+		return studentsRepository.findById(id);
 	}
 
 	/**

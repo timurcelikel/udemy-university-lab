@@ -25,6 +25,10 @@ public class Student {
 
 	private LocalDate dateOfBirth;
 
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "program_id")
+	private Program program;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "profile_id")
 	private LearnerProfile learnerProfile;
@@ -36,12 +40,14 @@ public class Student {
 	public Student(String firstName,
 			String lastName,
 			String email,
-			LocalDate dateOfBirth) {
+			LocalDate dateOfBirth,
+			Program program) {
 
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.dateOfBirth = dateOfBirth;
+		this.program = program;
 		this.learnerProfile =
 				new LearnerProfile((short) LocalDate.now().getYear());
 	}
@@ -69,6 +75,11 @@ public class Student {
 	public LocalDate getDateOfBirth() {
 
 		return dateOfBirth;
+	}
+
+	public Program getProgram() {
+
+		return program;
 	}
 
 	public LearnerProfile getLearnerProfile() {

@@ -1,50 +1,70 @@
 package university.management.model;
 
+import javax.persistence.*;
+
 /**
- * @author Michael Pogrebinsky - www.topdeveloperacademy.com
- * A Persistence entity that represents a program a student can follow to earn a degree in a
- * particular field of study
+ * @author Michael Pogrebinsky - www.topdeveloperacademy.com A Persistence entity that represents a program a student can follow to earn a degree in a
+ * 		particular field of study
  */
+@Table(name = "Programs")
+@Entity
 public class Program {
 
-    private Long programId;
-    private int requiredYearsToGraduation;
-    private int requiredCreditsToGraduation;
-    private String fieldOfStudy;
-    private Degree degree;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long programId;
 
-    public Program() {
-    }
+	@Column(nullable = false)
+	private int requiredYearsToGraduation = 4;
 
-    public Program(String fieldOfStudy, Degree degree) {
-        this.fieldOfStudy = fieldOfStudy;
-        this.degree = degree;
-    }
+	@Column(nullable = false)
+	private int requiredCreditsToGraduation = 200;
 
-    public Long getProgramId() {
-        return programId;
-    }
+	@Column(nullable = false)
+	private String fieldOfStudy;
 
-    public int getRequiredYearsToGraduation() {
-        return requiredYearsToGraduation;
-    }
+	@Enumerated(EnumType.STRING)
+	private Degree degree;
 
-    public int getRequiredCreditsToGraduation() {
-        return requiredCreditsToGraduation;
-    }
+	public Program() {
 
-    public String getFieldOfStudy() {
-        return fieldOfStudy;
-    }
+	}
 
-    public Degree getDegree() {
-        return degree;
-    }
+	public Program(String fieldOfStudy, Degree degree) {
 
-    public enum Degree {
-        ASSOCIATE,
-        BACHELOR,
-        MASTER,
-        PHD,
-    }
+		this.fieldOfStudy = fieldOfStudy;
+		this.degree = degree;
+	}
+
+	public Long getProgramId() {
+
+		return programId;
+	}
+
+	public int getRequiredYearsToGraduation() {
+
+		return requiredYearsToGraduation;
+	}
+
+	public int getRequiredCreditsToGraduation() {
+
+		return requiredCreditsToGraduation;
+	}
+
+	public String getFieldOfStudy() {
+
+		return fieldOfStudy;
+	}
+
+	public Degree getDegree() {
+
+		return degree;
+	}
+
+	public enum Degree {
+		ASSOCIATE,
+		BACHELOR,
+		MASTER,
+		PHD,
+	}
 }

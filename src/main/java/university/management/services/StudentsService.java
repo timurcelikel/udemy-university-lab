@@ -50,7 +50,7 @@ public class StudentsService {
 			String email, LocalDate dateOfBirth,
 			Program program) {
 
-		Student student = new Student(firstName, lastName, email, dateOfBirth);
+		Student student = new Student(firstName, lastName, email, dateOfBirth, program);
 		studentsRepository.save(student);
 	}
 
